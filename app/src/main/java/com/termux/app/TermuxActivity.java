@@ -599,6 +599,17 @@ public final class TermuxActivity extends Activity implements ServiceConnection 
     }
 
     void addNewSession(boolean failSafe, String sessionName) {
+        // DEBUG
+        System.out.println("TermuxActivity.addNewSession()  sessionName = " + sessionName);
+
+        if (mTermService == null) {
+            System.out.println("TermuxActivity.addNewSession()  ERROR: mTermService == null  try to startService");
+            // try to startService
+            Intent serviceIntent = new Intent(this, TermuxService.class);
+            startService(serviceIntent);
+
+            return;
+        }
         if (mTermService.getSessions().size() >= MAX_SESSIONS) {
             new AlertDialog.Builder(this).setTitle(R.string.max_terminals_reached_title).setMessage(R.string.max_terminals_reached_message)
                 .setPositiveButton(android.R.string.ok, null).show();

@@ -27,7 +27,8 @@ android {
         }
 
         ndk {
-            abiFilters 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+            //abiFilters 'armeabi-v7a', 'arm64-v8a'
+            abiFilters 'armeabi-v7a'
         }
 
     }
@@ -134,10 +135,8 @@ clean {
 task downloadBootstraps(){
     doLast {
         def version = 21
-        downloadBootstrap("aarch64", "9d362f1396e3a7d6987f09b8c3886c5aad514ab195ec7874a32000dc3b9cecde", version)
+        //downloadBootstrap("aarch64", "9d362f1396e3a7d6987f09b8c3886c5aad514ab195ec7874a32000dc3b9cecde", version)
         downloadBootstrap("arm",     "3c2f2ca9424fc984a4df54a3f9b38db3413b635ba39b89dfd8c753418730f719", version)
-        downloadBootstrap("i686",    "87afbd0fe6ebdc3abd9f2e5bc6136dbbf49991e485c9e9b03c4fe0149543ed7d", version)
-        downloadBootstrap("x86_64",  "bc91e5524d516cbe34b2ef082f6ebda1146457c8fa0373d06f7a1bb0c7be41df", version)
     }
 }
 
